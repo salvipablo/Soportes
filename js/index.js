@@ -1,5 +1,3 @@
-const ct = document.getElementById("ct");
-
 const supportData = [{
         "fecha": "31/01/2022",
         "dia": "Lunes",
@@ -142,74 +140,57 @@ const supportData = [{
     }
 ];
 
-function armarTabla(data, diaDeHoy) {
+const ct = document.getElementById("ct");
 
-    let inicio = 1;
-    let contentTable = "";
-    let diaInicial = "";
-    let diaLeido = ""
-    let destacado = "";
-
-    contentTable += `
-        <tr>
-            <th class="mainTable--th">FECHA</th>
-            <th class="mainTable--th">DIA</th>
-            <th class="mainTable--th">HORA</th>
-            <th class="mainTable--th">CLIENTE</th>
-            <th class="mainTable--th thDescripcion">DESCRIPCION</th>
-        </tr>
-    `;
+function buildTableContent(data, currentDay) {
+    let incomeFirstHour = 1;
+    let tableBodyContent = "";
+    let initialDay = "";
+    let consultedDay = ""
 
     data.forEach(element => {
-        diaLeido = element.dia;
+        consultedDay = element.dia;
 
-        if (diaInicial != diaLeido) {
-            inicio = 1;
-            diaInicial = diaLeido;
+        if (initialDay != consultedDay) {
+            incomeFirstHour = 1;
+            initialDay = consultedDay;
         }
 
-        if (element.dia == diaDeHoy) {
-            destacado = "hoy";
-        } else {
-            destacado = "";
-        }
+        let highlighToday = element.dia == currentDay ? "hoy" : "";
 
-        if (inicio == 1) {
-            contentTable += `
+        if (incomeFirstHour == 1) {
+            tableBodyContent += `
                 <tr>
-                    <td class="mainTable--td boderRow" rowspan="4">${ element.fecha }</td>
-                    <td class="mainTable--td boderRow" rowspan="4">${ element.dia }</td>
+                    <td class="mainTable--td borderRow" rowspan="4">${ element.fecha }</td>
+                    <td class="mainTable--td borderRow" rowspan="4">${ element.dia }</td>
                     <td class="mainTable--td">${ element.hora }</td>
-                    <td class="mainTable--td ${ destacado }">${ element.cliente }</td>
+                    <td class="mainTable--td ${ highlighToday }">${ element.cliente }</td>
                     <td class="mainTable--td">${ element.descripcion }</td>
+                </tr>
             `;
-            inicio = 2;
+            incomeFirstHour = 2;
         } else {
-            if (element.hora == "15:00") {
-                contentTable += `
-                    <tr>
-                        <td class="mainTable--td boderRow">${ element.hora }</td>
-                        <td class="mainTable--td boderRow ${ destacado }">${ element.cliente }</td>
-                        <td class="mainTable--td boderRow">${ element.descripcion }</td>
-                    </tr>
-                `;
-            } else {
-                contentTable += `
-                    <tr>
-                        <td class="mainTable--td">${ element.hora }</td>
-                        <td class="mainTable--td ${ destacado }">${ element.cliente }</td>
-                        <td class="mainTable--td">${ element.descripcion }</td>
-                    </tr>
-                `;
-            }
+            let yesEdge = element.hora == "15:00" ? "borderRow" : "";
+            tableBodyContent += `
+                <tr>
+                    <td class="mainTable--td ${ yesEdge }">${ element.hora }</td>
+                    <td class="mainTable--td ${ yesEdge } ${ highlighToday }">${ element.cliente }</td>
+                    <td class="mainTable--td ${ yesEdge }">${ element.descripcion }</td>
+                </tr>
+            `;
         }
     });
-    ct.innerHTML = contentTable;
+
+    ct.innerHTML = tableBodyContent;
 }
 
-const fechaComoCadena = new Date().toDateString();
 
-const dias = [
+/*
+ * To define what the current day is
+ */
+const dateAsString = new Date().toDateString();
+
+const days = [
     'domingo',
     'lunes',
     'martes',
@@ -219,8 +200,8 @@ const dias = [
     'sábado',
 ];
 
-const numeroDia = new Date(fechaComoCadena).getDay();
+const dayNumber = new Date(dateAsString).getDay();
 
-const nombreDia = dias[numeroDia].charAt(0).toUpperCase() + dias[numeroDia].slice(1, dias[numeroDia].length);
+const dayName = days[dayNumber].charAt(0).toUpperCase() + days[dayNumber].slice(1);
 
-armarTabla(supportData, nombreDia);
+buildTableContent(supportData, dayName);
