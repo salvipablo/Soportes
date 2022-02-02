@@ -1,0 +1,41 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.mainTitle {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.cntMain {
+    display: flex;
+    justify-content: center;
+}
+
+.mainTable {
+    border-spacing: 0;
+}
+
+.mainTable--th {
+    width: 250px;
+    height: 3em;
+    background-color: #63778d;
+    color: #ffffff;
+}
+
+.thDescripcion {
+    width: 500px;
+}
+
+.mainTable--td {
+    height: 1.5em;
+    text-align: center;
+}
+
+.boderRow {
+    border-bottom: 3px solid #63778d;
+}
+
+.hoy {
+    background-color: #cee2a4;
+}
