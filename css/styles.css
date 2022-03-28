@@ -1,107 +1,116 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-.cntTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1em 0 1em 0;
+.mb-1 {
+  margin-bottom: 1em;
 }
 
-.cntMain {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #eff1f1;
-    padding: 3em 0 3em 0;
-}
 .cntInputDate {
-    width: 1500px;
+  width: 1500px;
 }
 
 .labelDate {
-    width: 200px;
+  width: 200px;
 }
 
 .inputDate {
-    display: inline-block;
-    width: 200px;
+  display: inline-block;
+  width: 200px;
 }
 
+/* Table */
 .cntTable {
-    width: 1500px;
+  width: 1500px;
 }
 
 .mainTable {
-    border-spacing: 0;
+  border-spacing: 0;
 }
 
 .mainTable--th {
-    width: 250px;
-    height: 3em;
-    background-color: #63778d;
-    color: #ffffff;
+  width: 250px;
+  height: 3em;
+  background-color: #63778d;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .thDescripcion {
-    width: 600px;
+  width: 600px;
 }
 
 .mainTable--td {
-    height: 1.7em;
-    text-align: center;
+  height: 1.7em;
+  text-align: center;
 }
 
 .borderRow {
-    border-bottom: 3px solid #63778d;
+  border-bottom: 3px solid #63778d;
 }
 
 .hoy {
-    background-color: #cee2a4;
+  background-color: #cee2a4;
 }
 
 .cntForm {
-    background-color: #eee7de;
-    padding: 3em 0 3em 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-color: #eee7de;
+  padding: 3em 0 3em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .titleForm {
-    margin-bottom: 1em ;
+  margin-bottom: 1em;
 }
 
 .labelForm {
-    width: 250px;
-    display: inline-block;
+  width: 250px;
+  display: inline-block;
 }
 
 .fieldForm {
-    padding: 1em;
-    margin-bottom: 1em;
-    border-radius: 0.2em;
-    border: 1px solid #333333;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 0.2em;
+  border: 1px solid #333333;
 }
 
 .btnForm {
-    width: 61em;
-    padding: 1em;
-    margin-top: 1em;
+  width: 61em;
+  padding: 1em;
+  margin-top: 1em;
 }
 
 .fieldClient {
-    width: 20em;
+  width: 20em;
 }
 
 .fieldDescription {
-    width: 40em;
+  width: 40em;
 }
+
+.cntTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0 1em 0;
+}
+
+.cntSupports {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #eff1f1;
+  padding: 3em 0 3em 0;
+}
+
+/*# sourceMappingURL=styles.css.map */

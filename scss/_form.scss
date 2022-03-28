@@ -1,0 +1,38 @@
+.cntForm {
+  background-color: #eee7de;
+  padding: 3em 0 3em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleForm {
+  margin-bottom: 1em ;
+}
+
+.labelForm {
+  width: 250px;
+  display: inline-block;
+}
+
+.fieldForm {
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 0.2em;
+  border: 1px solid #333333;
+}
+
+.btnForm {
+  width: 61em;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.fieldClient {
+  width: 20em;
+}
+
+.fieldDescription {
+  width: 40em;
+}

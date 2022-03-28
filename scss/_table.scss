@@ -1,0 +1,34 @@
+@import "variables";
+
+.cntTable {
+  width: 1500px;
+}
+
+.mainTable {
+  border-spacing: 0;
+}
+
+.mainTable--th {
+  width: 250px;
+  height: 3em;
+  background-color: $back_table_th;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.thDescripcion {
+  width: 600px;
+}
+
+.mainTable--td {
+  height: 1.7em;
+  text-align: center;
+}
+
+.borderRow {
+  border-bottom: 3px solid $border_table_row;
+}
+
+.hoy {
+  background-color: $back_current_day;
+}

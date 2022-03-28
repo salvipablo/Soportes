@@ -1,0 +1,22 @@
+@use "generals";
+@use "tools";
+@use "formDate";
+@use "table";
+@use "form";
+
+.cntTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0 1em 0;
+}
+
+.cntSupports {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #eff1f1;
+  padding: 3em 0 3em 0;
+}
+
