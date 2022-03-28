@@ -1,4 +1,4 @@
-const supportData = [
+let supportData = [
   { "fecha": "2022-03-14", "dia": "Lunes", "hora": "09:00", "cliente": "-", "descripcion": "-" },
   { "fecha": "2022-03-14", "dia": "Lunes", "hora": "10:30", "cliente": "-", "descripcion": "-" },
   { "fecha": "2022-03-14", "dia": "Lunes", "hora": "13:30", "cliente": "-", "descripcion": "-" },

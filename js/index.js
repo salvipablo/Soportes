@@ -100,6 +100,26 @@ function getDateData(date) {
     return [year, month, day];
 }
 
+function loadData() {
+    let dataLocalStorage = JSON.parse(localStorage.getItem("supportData"));
+    supportData = dataLocalStorage;
+}
+
+function defineItemlocalStorage() {
+    let stringSave = "[";
+    for (let i = 0; i < supportData.length; i++) {
+        if (i == 19) {
+            stringSave += `{ "fecha": "${supportData[i].fecha}", "dia": "${supportData[i].dia}", "hora": "${supportData[i].hora}", "cliente": "${supportData[i].cliente}", "descripcion": "${supportData[i].descripcion}" }`;
+        } else {
+            stringSave += `{ "fecha": "${supportData[i].fecha}", "dia": "${supportData[i].dia}", "hora": "${supportData[i].hora}", "cliente": "${supportData[i].cliente}", "descripcion": "${supportData[i].descripcion}" },`;
+        }
+    }
+    stringSave += "]"
+
+    localStorage.clear();
+    localStorage.setItem('supportData', stringSave);
+}
+
 
 /* Events. */
 
@@ -117,6 +137,8 @@ btnForm.addEventListener("click", (e) =>{
     };
 
     supportData[positionArray] = newRecord;
+
+    defineItemlocalStorage();
 
     buildTableContent(supportData, defineDay());
 });
@@ -143,28 +165,19 @@ inputDate.addEventListener("change", () => {
             b++;
             proximoCambio =i + 4;
         }
-        console.log(b);
-        console.log(i);
-        console.log(dates[b]);
         supportData[i].fecha = dates[b];
     }
 
-    let stringSave = "[";
-    for (let i = 0; i < supportData.length; i++) {
-        if (i == 19) {
-            stringSave += `{ "fecha": "${supportData[i].fecha}", "dia": "${supportData[i].dia}", "hora": "${supportData[i].hora}", "cliente": "${supportData[i].cliente}", "descripcion": "${supportData[i].descripcion}" }`;
-        } else {
-            stringSave += `{ "fecha": "${supportData[i].fecha}", "dia": "${supportData[i].dia}", "hora": "${supportData[i].hora}", "cliente": "${supportData[i].cliente}", "descripcion": "${supportData[i].descripcion}" },`;
-        }
-    }
-    stringSave += "];"
+    defineItemlocalStorage();
 
-    localStorage.clear();
-    localStorage.setItem('supportData', stringSave);
-    console.log(stringSave);
+    buildTableContent(supportData, defineDay());
 });
 
 
 /* Program. */
+
+if ( localStorage.getItem("supportData") ) {
+    loadData();
+}
 
 buildTableContent(supportData, defineDay());

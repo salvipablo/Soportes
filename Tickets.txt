@@ -4,3 +4,4 @@ T#002 - Refactorizacion de codigo js.
 T#003 - Edicion del archivo index por nuevos soportes
 T#0004 - Alta nuevo registro y Refactorizacion.
 T#0005 - Armado de tabla segun fecha.
+T#0006 - Que funcione el sistema con localstorage.
