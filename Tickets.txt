@@ -1,0 +1,5 @@
+****  TICKETS  ****
+01 - Commit inicial
+02 - Refactorizacion de codigo js.
+03 - Edicion del archivo index por nuevos soportes
+04 - Alta nuevo registro y Refactorizacion.

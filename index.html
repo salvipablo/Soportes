@@ -17,7 +17,9 @@
 </head>
 
 <body>
-    <h1 class="mainTitle">Soportes</h1>
+    <div class="cntTitle">
+        <h1 class="mainTitle">Soportes</h1>
+    </div>
 
     <div class="cntMain">
         <table class="mainTable">
@@ -35,6 +37,37 @@
         </table>
     </div>
 
+    <div class="cntForm">
+        <h2 class="titleForm">Nuevo Soporte</h2>
+        <form>
+            <label class="labelForm" for="day">Seleccione dia de soporte:</label>
+            <select class="fieldForm" name="day" id="day">
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+            </select><br>
+
+            <label class="labelForm" for="time">Seleccione horario de soporte:</label>
+            <select class="fieldForm" name="time" id="time">
+                <option value="09:00">09:00</option>
+                <option value="10:30">10:30</option>
+                <option value="13:30">13:30</option>
+                <option value="15:00">15:00</option>
+            </select><br>
+
+            <label class="labelForm" for="client">Nombre cliente:</label>
+            <input class="fieldForm fieldClient" type="text" name="client" id="client"><br>
+
+            <label class="labelForm" for="description">Descripcion:</label>
+            <input class="fieldForm fieldDescription" type="text" name="description" id="description"><br>
+
+            <input class="btnForm" id="btnForm" type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script src="js/data.js"></script>
     <script src="js/index.js"></script>
 </body>
 

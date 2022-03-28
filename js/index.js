@@ -1,146 +1,16 @@
-const supportData = [{
-        "fecha": "07/02/2022",
-        "dia": "Lunes",
-        "hora": "09:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "07/02/2022",
-        "dia": "Lunes",
-        "hora": "10:30",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "07/02/2022",
-        "dia": "Lunes",
-        "hora": "13:30",
-        "cliente": "William",
-        "descripcion": "Instalacion del software DSPMC."
-    },
-    {
-        "fecha": "07/02/2022",
-        "dia": "Lunes",
-        "hora": "15:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "08/02/2022",
-        "dia": "Martes",
-        "hora": "09:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "08/02/2022",
-        "dia": "Martes",
-        "hora": "10:30",
-        "cliente": "Jonas William",
-        "descripcion": "Backup de las bases de datos."
-    },
-    {
-        "fecha": "08/02/2022",
-        "dia": "Martes",
-        "hora": "13:30",
-        "cliente": "Caroly Cardenas",
-        "descripcion": "Ayuda en una instalacion de software"
-    },
-    {
-        "fecha": "08/02/2022",
-        "dia": "Martes",
-        "hora": "15:00",
-        "cliente": "cliente Gaspar",
-        "descripcion": "firmware de balanceo para un Pocket"
-    },
-    {
-        "fecha": "09/02/2022",
-        "dia": "Miércoles",
-        "hora": "09:00",
-        "cliente": "Jorge - Chile",
-        "descripcion": "Actualizacion a version 8."
-    },
-    {
-        "fecha": "09/02/2022",
-        "dia": "Miércoles",
-        "hora": "10:30",
-        "cliente": "Jonas William",
-        "descripcion": "Backup de las bases de datos."
-    },
-    {
-        "fecha": "09/02/2022",
-        "dia": "Miércoles",
-        "hora": "13:30",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "09/02/2022",
-        "dia": "Miércoles",
-        "hora": "15:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "10/02/2022",
-        "dia": "Jueves",
-        "hora": "09:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "10/02/2022",
-        "dia": "Jueves",
-        "hora": "10:30",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "10/02/2022",
-        "dia": "Jueves",
-        "hora": "13:30",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "10/02/2022",
-        "dia": "Jueves",
-        "hora": "15:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "11/02/2022",
-        "dia": "Viernes",
-        "hora": "09:00",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "11/02/2022",
-        "dia": "Viernes",
-        "hora": "10:30",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "11/02/2022",
-        "dia": "Viernes",
-        "hora": "13:30",
-        "cliente": "-",
-        "descripcion": "-"
-    },
-    {
-        "fecha": "11/02/2022",
-        "dia": "Viernes",
-        "hora": "15:00",
-        "cliente": "-",
-        "descripcion": "-"
-    }
-];
+/* Declaration of variables. */
 
 const ct = document.getElementById("ct");
+
+// form components.
+const day = document.getElementById("day");
+const time = document.getElementById("time");
+const client = document.getElementById("client");
+const description = document.getElementById("description");
+const btnForm = document.getElementById("btnForm");
+
+
+/* Functions. */
 
 function buildTableContent(data, currentDay) {
     let incomeFirstHour = 1;
@@ -184,24 +54,65 @@ function buildTableContent(data, currentDay) {
     ct.innerHTML = tableBodyContent;
 }
 
+function positionArrayDay(day) {
+    if (day == "Lunes") return 0;
+    if (day == "Martes") return 4;
+    if (day == "Miercoles") return 8;
+    if (day == "Jueves") return 12;
+    return 16;
+}
 
-/*
- * To define what the current day is
- */
-const dateAsString = new Date().toDateString();
+function positionArrayTime(time) {
+    if (time == "09:00") return 0;
+    if (time == "10:30") return 1;
+    if (time == "13:30") return 2;
+    return 3;
+}
 
-const days = [
-    'domingo',
-    'lunes',
-    'martes',
-    'miércoles',
-    'jueves',
-    'viernes',
-    'sábado',
-];
+function defineDay() {
+    /*
+    * To define what the current day is.
+    */
 
-const dayNumber = new Date(dateAsString).getDay();
+    let dateAsString = new Date().toDateString();
 
-const dayName = days[dayNumber].charAt(0).toUpperCase() + days[dayNumber].slice(1);
+    let days = [
+        'domingo',
+        'lunes',
+        'martes',
+        'miércoles',
+        'jueves',
+        'viernes',
+        'sábado',
+    ];
 
-buildTableContent(supportData, dayName);
+    let dayNumber = new Date(dateAsString).getDay();
+
+    return days[dayNumber].charAt(0).toUpperCase() + days[dayNumber].slice(1);
+}
+
+
+/* Events. */
+
+btnForm.addEventListener("click", (e) =>{
+    e.preventDefault();
+
+    let positionArray = positionArrayDay(day.value) + positionArrayTime(time.value);
+
+    let newRecord = { 
+        "fecha": supportData[positionArray].fecha, 
+        "dia": day.value, 
+        "hora": time.value, 
+        "cliente": client.value, 
+        "descripcion": description.value
+    };
+
+    supportData[positionArray] = newRecord;
+
+    buildTableContent(supportData, defineDay());
+});
+
+
+/* Program. */
+
+buildTableContent(supportData, defineDay());
