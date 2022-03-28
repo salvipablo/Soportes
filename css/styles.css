@@ -17,8 +17,26 @@ body {
 .cntMain {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: #eff1f1;
     padding: 3em 0 3em 0;
+}
+.cntInputDate {
+    width: 1500px;
+}
+
+.labelDate {
+    width: 200px;
+}
+
+.inputDate {
+    display: inline-block;
+    width: 200px;
+}
+
+.cntTable {
+    width: 1500px;
 }
 
 .mainTable {

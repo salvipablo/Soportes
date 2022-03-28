@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/tools.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Google Fonts -->
@@ -22,19 +24,26 @@
     </div>
 
     <div class="cntMain">
-        <table class="mainTable">
-            <thead>
-                <tr>
-                    <th class="mainTable--th">FECHA</th>
-                    <th class="mainTable--th">DIA</th>
-                    <th class="mainTable--th">HORA</th>
-                    <th class="mainTable--th">CLIENTE</th>
-                    <th class="mainTable--th thDescripcion">DESCRIPCION</th>
-                </tr>
-            </thead>
-            <tbody id="ct">
-            </tbody>
-        </table>
+        <div class="cntInputDate mb-1">
+            <label class="labelDate" for="start">Start date:</label>
+            <input class="inputDate" type="date" id="inputDate" name="trip-start">
+        </div>
+
+        <div class="cntTable">
+            <table class="mainTable">
+                <thead>
+                    <tr>
+                        <th class="mainTable--th">FECHA</th>
+                        <th class="mainTable--th">DIA</th>
+                        <th class="mainTable--th">HORA</th>
+                        <th class="mainTable--th">CLIENTE</th>
+                        <th class="mainTable--th thDescripcion">DESCRIPCION</th>
+                    </tr>
+                </thead>
+                <tbody id="ct">
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="cntForm">

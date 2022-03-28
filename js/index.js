@@ -2,6 +2,8 @@
 
 const ct = document.getElementById("ct");
 
+const inputDate = document.getElementById("inputDate");
+
 // form components.
 const day = document.getElementById("day");
 const time = document.getElementById("time");
@@ -91,6 +93,13 @@ function defineDay() {
     return days[dayNumber].charAt(0).toUpperCase() + days[dayNumber].slice(1);
 }
 
+function getDateData(date) {
+    let year = date.getFullYear().toString();
+    let month = date.getMonth()+1 < 10 ? '0'+parseInt(date.getMonth()+1) : parseInt(date.getMonth()+1);
+    let day = date.getDate()<10 ? '0'+parseInt(date.getDate()) : date.getDate().toString();
+    return [year, month, day];
+}
+
 
 /* Events. */
 
@@ -110,6 +119,49 @@ btnForm.addEventListener("click", (e) =>{
     supportData[positionArray] = newRecord;
 
     buildTableContent(supportData, defineDay());
+});
+
+inputDate.addEventListener("change", () => {
+    let chosenDate = new Date(`${inputDate.value}T00:00:00`);
+
+    let dates = [];
+    
+    let dataDate = getDateData(chosenDate);
+    dates.push(`${dataDate[0]}-${dataDate[1]}-${dataDate[2]}`)
+
+    for (let i = 1; i < 5; i++) {
+        chosenDate = new Date(chosenDate.setDate(chosenDate.getDate()+1));
+        dataDate = getDateData(chosenDate);
+        dates.push(`${dataDate[0]}-${dataDate[1]}-${dataDate[2]}`)
+    }
+
+    let b = 0;
+    let proximoCambio = 0 + 4;
+
+    for (let i = 0; i < supportData.length; i++) {
+        if (i == proximoCambio) {
+            b++;
+            proximoCambio =i + 4;
+        }
+        console.log(b);
+        console.log(i);
+        console.log(dates[b]);
+        supportData[i].fecha = dates[b];
+    }
+
+    let stringSave = "[";
+    for (let i = 0; i < supportData.length; i++) {
+        if (i == 19) {
+            stringSave += `{ "fecha": "${supportData[i].fecha}", "dia": "${supportData[i].dia}", "hora": "${supportData[i].hora}", "cliente": "${supportData[i].cliente}", "descripcion": "${supportData[i].descripcion}" }`;
+        } else {
+            stringSave += `{ "fecha": "${supportData[i].fecha}", "dia": "${supportData[i].dia}", "hora": "${supportData[i].hora}", "cliente": "${supportData[i].cliente}", "descripcion": "${supportData[i].descripcion}" },`;
+        }
+    }
+    stringSave += "];"
+
+    localStorage.clear();
+    localStorage.setItem('supportData', stringSave);
+    console.log(stringSave);
 });
 
 
