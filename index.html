@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-    <!-- Google Fonts -->
 
     <title>Day</title>
 </head>
@@ -44,6 +43,7 @@
                 </tbody>
             </table>
         </div>
+        <button class="btnModal" id="btnModal">Abrir modal</button>
     </div>
 
     <div class="cntForm">
@@ -76,8 +76,19 @@
         </form>
     </div>
 
+    <div class="modal-container" id="modal-container">
+        <div class="modal modal-close" id="modal">
+            <p class="close" id="close">X</p>
+            <img src="images/semapi.jpg" alt="ilustrations">
+            <div class="modal-textos">
+                <p id="textModal"></p>
+            </div>
+        </div>
+    </div>
+
     <script src="js/data.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/modal.js"></script>
 </body>
 
 </html>
